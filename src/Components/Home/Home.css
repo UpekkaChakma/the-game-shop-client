@@ -1,0 +1,26 @@
+.game-card{
+    width: 11rem;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-shadow: 10px 10px 40px grey;
+    border-left: 7px solid sandybrown;
+
+    animation: article-load 300ms ease-in var(--article-load-delay);
+    animation-fill-mode: forwards;
+    transform: translateY(-20px);
+    opacity: 0;
+ 
+}
+.game-card:hover{
+    background-color: rgb(241, 235, 228);
+}
+@keyframes article-load {
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
