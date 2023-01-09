@@ -1,0 +1,16 @@
+#loading-spinner {
+    min-height: 100vh;
+}
+
+#loading-spinner>* {
+    height: 15px;
+    width: 15px;
+}
+
+#loading-spinner>*:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+#loading-spinner>*:nth-child(3) {
+    animation-delay: 200ms;
+}

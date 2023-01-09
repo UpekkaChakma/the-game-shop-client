@@ -5,59 +5,65 @@ import {
   Route,
 } from "react-router-dom";
 
-import Home from './Components/Home/Home';
-import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Home from './Components/User/pages/Home';
+// import PrivateRoute from './Components/User/components/PrivateRoute/PrivateRoute';
 import { createContext, useState } from 'react';
-import Admin from './Components/Admin/Admin';
-import CheckOut from './Components/CheckOut/CheckOut';
+import AddGameToDatabase from './Components/Admin/Pages/AddGameToDatabase';
+import CheckOut from './Components/User/pages/CheckOut/CheckOut';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NotFound from './Components/NotFound/NotFound';
-import Login from './Components/Login/Login';
-import ManageGames from './Components/ManageGames/ManageGames';
-import Orders from './Components/Orders/Orders';
+import NotFound from './Components/sharedComponents(user+admin)/UI/NotFound/NotFound';
+import Login from './Components/sharedComponents(user+admin)/Pages/Login';
+import SignUp from './Components/sharedComponents(user+admin)/Pages/SignUp';
+import EditGames from './Components/Admin/Pages/EditGames';
+import DeleteGame from './Components/Admin/Pages/DeleteGame';
+// import Orders from './Components/User/pages/Orders/Orders';
 
 
 export const UserContext = createContext();
 
 
 function App() {
-  document.title = "The game shop";
 
-  const [loggedInUser, setLoggedInUser] = useState({});
+  document.title = "The game shop";
+  const [loggedInUser, setLoggedInUser] = useState({
+    email: "bkashkumar.bk@gmail.com",
+    img: '',
+    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJrYXNoa3VtYXIuYmtAZ21haWwuY29tIiwiaWF0IjoxNjcxOTY4OTc3LCJleHAiOjE2NzIyMjgxNzd9.ufUruNxSk5Ta4OYjCDW6oP3-uNykGA0KYEWkl8nQYS4"
+  });
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
-          <Route path="/home">
-            <Home></Home>
+
+          <Route path="/signUp" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/checkout/:id" component={CheckOut} />
+
+          {/* <PrivateRoute path="/my-games">
+            <Orders />
+          </PrivateRoute> */}
+
+          <Route path="/admin/add">
+            <AddGameToDatabase />
           </Route>
-          <Route path="/login">
-            <Login></Login>
+
+          <Route path="/admin/edit">
+            <EditGames />
           </Route>
 
-          <PrivateRoute path="/checkout/:id">
-            <CheckOut></CheckOut>
-          </PrivateRoute>
-
-          <PrivateRoute path="/orderList">
-            <Orders></Orders>
-          </PrivateRoute>
-
-          <PrivateRoute path="/admin/addGame">
-            <Admin></Admin>
-          </PrivateRoute>
-
-          <PrivateRoute path="/admin/manageGames">
-            <ManageGames></ManageGames>
-          </PrivateRoute>
+          <Route path="/admin/delete">
+            <DeleteGame />
+          </Route>
 
           <Route exact path="/">
-            <Home></Home>
+            <Home />
           </Route>
-          
+
           <Route path="*">
-            <NotFound></NotFound>
+            <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </UserContext.Provider>

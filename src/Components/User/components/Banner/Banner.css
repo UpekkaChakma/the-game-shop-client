@@ -1,0 +1,28 @@
+.carousel-item img {
+    filter: brightness(50%);
+    height: 90vh;
+    object-fit: cover;
+    object-position: 0%;
+    transition: filter .3s linear;
+}
+
+.carousel-item img:hover {
+    filter: brightness(70%);
+}
+
+.carousel-caption h4 {
+    font-weight: 500;
+}
+
+.carousel-caption p {
+    font-weight: 200;
+}
+
+.carousel-caption img {
+    filter: brightness(100%);
+    width: 50px;
+    height: 50px;
+    z-index: 30;
+    padding: 10px;
+    margin-top: -13px;
+}

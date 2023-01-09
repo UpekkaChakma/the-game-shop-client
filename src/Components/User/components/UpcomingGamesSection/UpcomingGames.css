@@ -1,0 +1,65 @@
+.upcoming-section__row {
+    background-color: rgba(255, 255, 255, .05);
+    border-radius: .5rem;
+    max-width: 700px !important;
+}
+
+.four-img__div {
+    border-radius: .25rem;
+    height: 265px;
+}
+
+.four-img__div div {
+    width: 120px;
+    height: 170px;
+    border-radius: .5rem;
+    transition: 230ms ease-in-out;
+}
+
+.four-img__div div:nth-child(1) {
+    background-image: url(../../../../Images/Kirby_and_The_Forgotten_Land_Icon.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+.four-img__div div:nth-child(2) {
+    background-image: url(../../../../Images/Cyberpunk_2077_box_art.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-left: -20px;
+    transform: translateY(15px);
+}
+
+.four-img__div div:nth-child(3) {
+    background-image: url(../../../../Images/Lego_Star_Wars_The_Skywalker_Saga.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-left: -20px;
+    transform: translateY(30px);
+}
+
+.four-img__div div:nth-child(4) {
+    background-image: url(../../../../Images/Minecraft_cover.png);
+    background-size: cover;
+    background-position: center;
+    margin-left: -20px;
+    transform: translateY(45px);
+}
+
+
+.four-img__div div:nth-child(1):hover {
+    transform: translateY(-10px);
+}
+
+.four-img__div div:nth-child(2):hover {
+    transform: translateY(5px);
+}
+
+.four-img__div div:nth-child(3):hover {
+    transform: translateY(20px);
+}
+
+.four-img__div div:nth-child(4):hover {
+    transform: translateY(35px);
+}

@@ -1,4 +1,68 @@
-h1{
-    margin-left: 25%;
-    padding: 30px;
+.side-nav-link-active {
+    background-color: rgba(255, 255, 255, 0.08);
+    transition: .3s linear;
+    border-left: 3px solid white;
+}
+
+input,
+.background-none,
+.image-label,
+textarea {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.image-label {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 180px;
+}
+
+.image-label-active {
+    border: 2px dashed green !important;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.ml-18 {
+    margin-left: 18px;
+}
+
+#game-list-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#game-list-table th {
+    border: none;
+}
+
+#game-list-table {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#game-list-table {
+    background-color: transparent;
+}
+
+.modal-content {
+    border: none !important;
 }
