@@ -1,35 +1,35 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { useContext } from "react";
 import { UserContext } from '../../../App';
 import { failedAlert } from "../UI/Alert";
+import { app } from "../Config/firebase.config";
+import useGetJwtToken from "../../Admin/customHooks/useGetJwtToken";
 
 const useSignInWith = (method) => {
     let history = useHistory();
-    let location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
-    const [setLoggedInUser] = useContext(UserContext);
+    const { setLoggedInUser } = useContext(UserContext);
+    const { getJwtToken } = useGetJwtToken();
 
     const handleSignIn = async () => {
         let provider;
-        if (method === 'google') {
-            provider = new firebase.auth.GoogleAuthProvider();
-        } else if (method === 'facebook') {
-            provider = new firebase.auth.FacebookAuthProvider()
-        }
+        method === 'google' ? provider = new firebase.auth.GoogleAuthProvider() : provider = new firebase.auth.FacebookAuthProvider()
+
         try {
-            const userCredentials = await firebase.auth().signInWithPopup(provider)
+            const userCredentials = await app.auth().signInWithPopup(provider);
+            const token = await getJwtToken(userCredentials.user.email)
             const newUser = {
                 name: userCredentials.user.displayName,
                 email: userCredentials.user.email,
-                photo: userCredentials.user.photoURL
+                photo: userCredentials.user.photoURL,
+                token: token.data
             }
             setLoggedInUser(newUser);
-            history.replace(from);
+            history.goBack();
 
         } catch (error) {
-            failedAlert();
+            failedAlert(error.message);
         }
     }
     return { handleSignIn }

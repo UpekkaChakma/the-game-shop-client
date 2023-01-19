@@ -1,25 +1,18 @@
 import React, { useContext, useRef } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
+import { app } from "../Config/firebase.config";
 import { UserContext } from '../../../App';
-import firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from '../Config/firebase.config';
 import useSignInWith from '../customHooks/useSignInWith';
 import SignUpAndLogInForm from '../UI/SignUpAndLogInForm/SignUpAndLogInForm';
 import { alert, successAlert } from '../UI/Alert';
+import useGetJwtToken from '../../Admin/customHooks/useGetJwtToken';
 
-
-if (firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig);
-}
-const auth = firebase.auth();
 
 const Login = () => {
     let history = useHistory();
-    let location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
-    const [setLoggedInUser] = useContext(UserContext);
+    const { setLoggedInUser } = useContext(UserContext);
+    const { getJwtToken } = useGetJwtToken();
 
     const email = useRef();
     const password = useRef();
@@ -36,25 +29,31 @@ const Login = () => {
             alert("password must be 8 characters length");
             return
         }
+        try {
+            let userCredentials = await app.auth().createUserWithEmailAndPassword(email.current.value, password.current.value);
+            alert("A verification link has sent to your email")
+            await userCredentials.user.sendEmailVerification();
 
-        let userCredentials = await firebase.auth().createUserWithEmailAndPassword(email.current.value, password.current.value);
-        alert("A verification link has sent to your email to verify")
-        await userCredentials.user.sendEmailVerification();
+            let interval = setInterval(async () => {
+                if (userCredentials.user.emailVerified) {
+                    successAlert("account created successfully");
+                    clearInterval(interval);
+                    const token = await getJwtToken(userCredentials.user.email)
+                    const newUser = {
+                        name: userCredentials.user.displayName,
+                        email: userCredentials.user.email,
+                        photo: userCredentials.user.photoURL,
+                        token: token.data
+                    };
+                    setLoggedInUser(newUser)
+                    history.goBack();
+                }
+                await userCredentials.user.reload();
+            }, 2000);
+        } catch (error) {
+            error.message ? alert(error.message) : alert('please try again')
+        }
 
-        let interval = setInterval(async () => {
-            if (userCredentials.user.emailVerified) {
-                successAlert("account created successfully");
-                clearInterval(interval);
-                const newUser = {
-                    name: userCredentials.user.displayName,
-                    email: userCredentials.user.email,
-                    photo: userCredentials.user.photoURL
-                };
-                setLoggedInUser(newUser)
-                history.replace(from);
-            }
-            await userCredentials.user.reload();
-        }, 2000);
     }
 
     const { handleSignIn: handleGoogleSignIn } = useSignInWith('google');

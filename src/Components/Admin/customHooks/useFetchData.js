@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios';
-import { UserContext } from '../../../App';
-import { useContext } from 'react';
 import { failedAlert } from '../../sharedComponents(user+admin)/UI/Alert';
+import useAxiosConfig from './useAxiosConfig';
 
 const useFetchData = (url) => {
+    const { email, axiosConfig } = useAxiosConfig();
     const [shouldReFetch, setShouldReFetch] = useState(false)
     const [state, setState] = useState({
         data: null,
@@ -13,12 +12,20 @@ const useFetchData = (url) => {
     });
 
     useEffect(() => {
-        const loadGames = async () => {
+        const loadData = async () => {
             try {
-                const res = await axios.get(url || "http://localhost:5000/user/games");
+                let response;
+                if (url) {
+                    response = await axiosConfig.post(url, {
+                        email
+                    });
+                } else {
+                    response = await axiosConfig.get("user/games");
+                }
+
                 setState(prevState => ({
                     ...prevState,
-                    data: res.data,
+                    data: response.data,
                 }))
             } catch (error) {
                 setState(prevState => ({
@@ -33,22 +40,17 @@ const useFetchData = (url) => {
             }
         }
 
-        loadGames();
+        loadData();
 
-    }, [url, shouldReFetch]);
+    }, [url, shouldReFetch, email]);
 
 
-    const [loggedInUser] = useContext(UserContext)
     const [data, setData] = useState({});
 
     const fetchSingleData = async (id) => {
         setData({});
         try {
-            const res = await axios.get(`http://localhost:5000/user/game/${id}`, {
-                headers: {
-                    "Authorization": loggedInUser.token
-                }
-            })
+            const res = await axiosConfig.get(`user/game/${id}`)
             setData(res.data)
         } catch (error) {
             failedAlert(error.response.data)

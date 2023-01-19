@@ -1,24 +1,16 @@
 import { successAlert, failedAlert } from '../../sharedComponents(user+admin)/UI/Alert'
-import axios from 'axios';
-import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import useAxiosConfig from './useAxiosConfig';
 
-const useFormSubmit = (imageURL, http_method, url) => {
-    const [loggedInUser] = useContext(UserContext);
+const useFormSubmit = (imageURL, http_method, targetRoute) => {
+    const { axiosConfig } = useAxiosConfig();
 
     const onSubmit = async (data) => {
-        const { image, ...extractedData } = data;
-        const formData = { ...extractedData, img: imageURL };
+        const { image, ...res } = data;
+        const formData = { ...res, img: imageURL };
 
         try {
-            const client = axios.create({
-                baseURL: "http://localhost:5000/admin/",
-                headers: {
-                    "Authorization": loggedInUser.token
-                }
-            })
             let successRes;
-            http_method === "post" ? successRes = await client.post(url, formData) : successRes = await client.put(url, formData);
+            http_method === "post" ? successRes = await axiosConfig.post(targetRoute, formData) : successRes = await axiosConfig.put(targetRoute, formData);
             successAlert(successRes.data);
         } catch (error) {
             failedAlert(error.response.data)

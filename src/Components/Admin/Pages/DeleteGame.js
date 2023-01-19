@@ -2,16 +2,14 @@ import React from 'react';
 import LoadingSpinner from '../../sharedComponents(user+admin)/UI/LoadingSpinner/LoadingSpinner';
 import useFetchData from '../customHooks/useFetchData';
 import Layout from '../Layout/Layout';
-import axios from 'axios';
 import swal from 'sweetalert';
 import '../Admin.css'
 import { failedAlert, successAlert, noChangeAlert } from '../../sharedComponents(user+admin)/UI/Alert';
 import TableOfGameList from '../components/TableOfGameList';
-import { useContext } from 'react';
-import { UserContext } from '../../../App';
+import useAxiosConfig from '../customHooks/useAxiosConfig';
 
 const DeleteGame = () => {
-    const [loggedInUser] = useContext(UserContext);
+    const { axiosConfig } = useAxiosConfig();
     const { state, setShouldReFetch } = useFetchData();
     const { data: gamesList, loading } = state;
 
@@ -26,11 +24,7 @@ const DeleteGame = () => {
             .then(async (willDelete) => {
                 if (willDelete) {
                     try {
-                        const res = await axios.delete(`http://localhost:5000/admin/delete/${id}`, {
-                            headers: {
-                                "Authorization": loggedInUser.token
-                            }
-                        });
+                        const res = await axiosConfig.delete(`https://the-game-shop.onrender.com/admin/delete/${id}`);
                         res.data && successAlert(`${title} deleted`);
                         setShouldReFetch(prevState => !prevState);
                     } catch (error) {

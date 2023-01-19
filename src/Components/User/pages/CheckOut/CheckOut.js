@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Image, Row, Table } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import MainLayout from '../../MainLayout';
@@ -14,6 +14,7 @@ const CheckOut = () => {
     const { id } = useParams();
     const history = useHistory();
     const { data, fetchSingleData } = useFetchData();
+    const [reFetch, setReFetch] = useState(false)
     const { isAlreadyPurchased } = useCheckCurrentGameInLibrary(id);
     const { axiosConfig, email } = useAxiosConfig();
     const { title, img, description, price, genre, developer } = data
@@ -23,13 +24,14 @@ const CheckOut = () => {
     }, [id]);
 
     async function handlePlaceOrder() {
-        if(email) {
+        if (email) {
             try {
-                const res = await axiosConfig.patch('add-order', {
+                const res = await axiosConfig.patch('user/add-order', {
                     email,
                     id
                 });
-                res && successAlert('Added to Library')
+                res && successAlert('Added to Library');
+                setReFetch(true)
             } catch (error) {
                 failedAlert(error.response.data)
             }
@@ -71,7 +73,7 @@ const CheckOut = () => {
                             <tbody >
                                 <tr>
                                     <th>Price</th>
-                                    <td>{price}</td>
+                                    <td>${price}</td>
                                 </tr>
                                 <tr>
                                     <th>Tax</th>
@@ -83,12 +85,12 @@ const CheckOut = () => {
                                 </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td>{price}</td>
+                                    <td>${price}</td>
                                 </tr>
                             </tbody>
                         </Table>
                         {
-                            isAlreadyPurchased ?
+                            isAlreadyPurchased || reFetch ?
                                 <Button variant="success" className='w-75 mx-2'>In library</Button>
                                 :
                                 <Button variant="danger" className='w-75 mx-2'

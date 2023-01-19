@@ -1,10 +1,6 @@
 import React from 'react'
 import './Banner.css';
 import { Carousel } from 'react-bootstrap'
-import ClashOfClanBanner from '../../../../Images/clash-of-clan.jpg'
-import Bloodborne from '../../../../Images/Bloodborne.jpg'
-import GenshinImpactBanner from '../../../../Images/genshin-impact.jpg'
-import COD from '../../../../Images/call-of-duty.webp'
 
 const Banner = () => {
     return (
@@ -12,11 +8,11 @@ const Banner = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={Bloodborne}
-                    alt="Clash Of Clan Banner 2"
+                    src="https://i.ibb.co/TkzDQfW/Bloodborne.jpg"
+                    alt="bloodborne"
                 />
                 <Carousel.Caption>
-                    <h2 className='font-500'>Bloodborne feel the adventure</h2>
+                    <h2 className='font-500'>Bloodborne deep dive into the adventure</h2>
                     <p className='text__p2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -24,8 +20,8 @@ const Banner = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={COD}
-                    alt=""
+                    src="https://i.ibb.co/2SJXGNq/call-of-duty.webp"
+                    alt="call-of-duty"
                 />
                 <Carousel.Caption>
                     <h2 className='font-500'>Call Of Duty: Best Online Multiplayer Games</h2>
@@ -36,8 +32,8 @@ const Banner = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={GenshinImpactBanner}
-                    alt="Clash Of Clan Banner"
+                    src="https://i.ibb.co/yskR8wc/genshin-impact.jpg"
+                    alt="genshin-impact"
                 />
             </Carousel.Item>
         </Carousel>

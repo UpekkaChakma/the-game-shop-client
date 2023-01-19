@@ -1,24 +1,17 @@
 import React, { useContext, useRef } from 'react';
+import { useHistory } from 'react-router';
 import { Container, Col, Row } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router';
-import { UserContext } from '../../../App';
-import firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from '../Config/firebase.config';
-import useSignInWith from '../customHooks/useSignInWith';
+import { app } from "../Config/firebase.config";
 import SignUpAndLogInForm from '../UI/SignUpAndLogInForm/SignUpAndLogInForm';
-import { successAlert } from '../UI/Alert';
-
-
-if (firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig);
-}
+import { UserContext } from '../../../App';
+import useSignInWith from '../customHooks/useSignInWith';
+import useGetJwtToken from '../../Admin/customHooks/useGetJwtToken';
+import { failedAlert } from '../UI/Alert';
 
 const Login = () => {
     let history = useHistory();
-    let location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
-    const [setLoggedInUser] = useContext(UserContext);
+    const { setLoggedInUser } = useContext(UserContext);
+    const { getJwtToken } = useGetJwtToken();
 
     const email = useRef();
     const password = useRef();
@@ -26,15 +19,20 @@ const Login = () => {
 
     const submit = async (e) => {
         e.preventDefault();
-        const userCredentials = await firebase.auth.signInWithEmailAndPassword(email, password);
-        successAlert("Log In successful");
-        const newUser = {
-            name: userCredentials.user.displayName,
-            email: userCredentials.user.email,
-            photo: userCredentials.user.photoURL
-        };
-        setLoggedInUser(newUser)
-        history.replace(from);
+        try {
+            const userCredentials = await app.auth().signInWithEmailAndPassword(email.current.value, password.current.value);
+            const token = await getJwtToken(userCredentials.user.email)
+            const newUser = {
+                name: userCredentials.user.displayName || 'user',
+                email: userCredentials.user.email,
+                photo: userCredentials.user.photoURL || 'https://lh4.googleusercontent.com/-Bt_0NORCvw8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckq6PN0bfARfUbZ5bcvCRrPeBUdKg/s96-c/photo.jpg',
+                token: token.data
+            }
+            setLoggedInUser(newUser)
+            history.goBack();
+        } catch (error) {
+            error.message ? failedAlert(error.message) : failedAlert("please try again")
+        }
     }
 
     const { handleSignIn: handleGoogleSignIn } = useSignInWith('google');

@@ -8,7 +8,14 @@ const SignUpAndLogInForm = ({ email, password, confirmPassword, handleGoogleSign
 
     return (
         <div className="card rounded-xl pb-3 px-3 my-5">
+
             <div className="card-body">
+                <div className="text-center text__p text-primary font-500">
+                    votex50815@ukbob.com | 12345678a
+                </div>
+                <div className="text-center text__p text-primary mb-3 font-400">
+                    for test purpose
+                </div>
                 <h5 className="card-title text-center font-600 text-secondary text-uppercase mb-4">
                     {shouldConfirmPassword ?
                         'Sign Up'

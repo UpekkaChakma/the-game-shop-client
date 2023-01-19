@@ -10,7 +10,7 @@ const AddGameToDatabase = () => {
 
   const { register, handleSubmit } = useForm();
   const [imageURL, handleImageUpload] = useImageUpload();
-  const [onSubmit] = useFormSubmit(imageURL, "post", "create");
+  const [onSubmit] = useFormSubmit(imageURL, "post", "admin/create");
 
   const game = {
     title: '',

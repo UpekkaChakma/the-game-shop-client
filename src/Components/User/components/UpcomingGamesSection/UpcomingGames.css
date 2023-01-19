@@ -17,14 +17,14 @@
 }
 
 .four-img__div div:nth-child(1) {
-    background-image: url(../../../../Images/Kirby_and_The_Forgotten_Land_Icon.jpg);
+    background-image: url("https://i.ibb.co/HXVTGSq/Kirby-and-The-Forgotten-Land-Icon.jpg");
     background-size: cover;
     background-position: center;
 }
 
 
 .four-img__div div:nth-child(2) {
-    background-image: url(../../../../Images/Cyberpunk_2077_box_art.jpg);
+    background-image: url("https://i.ibb.co/X2QsgBf/Cyberpunk-2077-box-art.jpg");
     background-size: cover;
     background-position: center;
     margin-left: -20px;
@@ -32,7 +32,7 @@
 }
 
 .four-img__div div:nth-child(3) {
-    background-image: url(../../../../Images/Lego_Star_Wars_The_Skywalker_Saga.jpg);
+    background-image: url("https://i.ibb.co/DzhSM5C/Lego-Star-Wars-The-Skywalker-Saga.jpg");
     background-size: cover;
     background-position: center;
     margin-left: -20px;
@@ -40,7 +40,7 @@
 }
 
 .four-img__div div:nth-child(4) {
-    background-image: url(../../../../Images/Minecraft_cover.png);
+    background-image: url("https://i.ibb.co/kJBNnnf/Minecraft-cover.png");
     background-size: cover;
     background-position: center;
     margin-left: -20px;

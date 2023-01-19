@@ -8,18 +8,17 @@ const useCheckCurrentGameInLibrary = (id) => {
     useEffect(() => {
         const checkIsCurrentGameInLibrary = async () => {
             try {
-                const res = await axiosConfig.get('check-is-in-library', {
+                const res = await axiosConfig.post('user/check-is-in-library', {
                     id,
                     email
                 })
-                console.log(id, email)
                 res && setIsAlreadyPurchased(true)
             } catch (error) {
-                console.log(error)
+                console.log(error.response)
             }
         }
 
-        checkIsCurrentGameInLibrary()
+        email && checkIsCurrentGameInLibrary()
     }, [axiosConfig, email, id])
 
     return { isAlreadyPurchased }

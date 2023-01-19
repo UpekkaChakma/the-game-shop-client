@@ -20,7 +20,7 @@ const EditGames = () => {
     const { register, handleSubmit } = useForm();
     const [imageURL, handleImageUpload] = useImageUpload();
 
-    const url = `update/${data._id}`
+    const url = `admin/update/${data._id}`
     const [onSubmit] = useFormSubmit(imageURL ? imageURL : data.img, "put", url);
     const [showModal, setShowModal] = useState(false);
 
