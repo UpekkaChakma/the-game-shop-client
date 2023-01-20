@@ -18,8 +18,8 @@ const GamesSection = ({ gamesList, handleCheckOut }) => {
                             />
                             <Card.Body className="p-0">
                                 <Card.Title id="card-title" className="pt-3 font-400">{game.title}</Card.Title>
-                                <Card.Text className='h6 text-white font-400 '>
-                                    {game.price}$
+                                <Card.Text className='h6 text-white font-300 '>
+                                    ${game.price}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
