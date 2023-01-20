@@ -40,11 +40,11 @@ const Login = () => {
                     clearInterval(interval);
                     const token = await getJwtToken(userCredentials.user.email)
                     const newUser = {
-                        name: userCredentials.user.displayName,
+                        name: userCredentials.user.displayName || 'user',
                         email: userCredentials.user.email,
-                        photo: userCredentials.user.photoURL,
+                        photo: userCredentials.user.photoURL || 'https://lh4.googleusercontent.com/-Bt_0NORCvw8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckq6PN0bfARfUbZ5bcvCRrPeBUdKg/s96-c/photo.jpg',
                         token: token.data
-                    };
+                    }
                     setLoggedInUser(newUser)
                     history.goBack();
                 }

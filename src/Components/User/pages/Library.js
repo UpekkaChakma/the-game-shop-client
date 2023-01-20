@@ -12,7 +12,7 @@ const Orders = () => {
         <MainLayout>
             {
                 loading ? <LoadingSpinner /> :
-                    <div className='d-flex justify-content-center align-items-center m-4'>
+                    <div className='d-flex justify-content-center align-items-center m-4 flex-wrap'>
                         {
                             games ? '' : <h4 className="text-white font-500 my-5">
                                 Please login to see your library
@@ -24,7 +24,7 @@ const Orders = () => {
                                     No game purchased yet
                                 </h4>
                                 : games?.map(game =>
-                                    <Image src={game.img} className="w-25" style={{ height: "250px", objectFit: 'cover' }} />
+                                    <Image src={game.img} style={{ height: "250px", width: "400px", objectFit: 'cover' }} />
                                 )
                         }
                     </div>
