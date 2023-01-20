@@ -21,7 +21,7 @@ const Home = () => {
     if (loading) return <LoadingSpinner />;
     return (
         <>
-            <div className="text__p text-center bg-info">
+            <div className="text__p text-center mx-2">
                 please reload the page if GAME CARDS didn't appear first time. Maybe that's happening because I am using slow and free server
             </div>
             <MainLayout>
