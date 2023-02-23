@@ -7,9 +7,10 @@ It also has admin part that admin can add and delete games.
 
 
 ### `The Game-shop frontend-client`
-Launches the test runner in the interactive watch mode.\
+MERN app for purchasing video games.
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `ReactJS` ### `React-Bootstrap` ### `Firebase` ### `User Part`
 
 ### `User Part`
 1. User can purchase game.
