@@ -2,7 +2,7 @@
 MERN app for purchasing video games.
 See the [Github repo](https://github.com/UpekkaChakma/the-game-shop-server) for it's back-end part.
 
-### `ReactJS`  `React-Bootstrap`  `Firebase`  `React-Hook-Form` `Sweetalert`
+### `ReactJS`   `React-Bootstrap`   `Firebase`   `React-Hook-Form`  `Sweetalert`  `axios`
 
 ### `User Part`
 1. User can purchase any available games.
