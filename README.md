@@ -17,4 +17,5 @@ MERN app for purchasing video games.
 
 ### `Authentication Part`
 1. Authentication with Firebase.
-2. Authentication methods are email-password, google and facebook. 
+2. Methods are email-password, google and facebook.
+3. Users and Admin has different authentication method. 
