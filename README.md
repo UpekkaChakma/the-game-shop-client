@@ -7,7 +7,7 @@ It also has admin part that admin can add and delete games.
 
 
 ### `The Game-shop frontend-client`
-MERN app for purchasing video games.
+Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 
@@ -17,5 +17,5 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 
 ### `Admin Part`
-Admin can add new game-data to mongodb database.
-Can edit and delete game-data.
+1. Admin can add new game-data to mongodb database.
+2. Can edit and delete game-data
