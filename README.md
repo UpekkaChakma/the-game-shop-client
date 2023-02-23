@@ -7,7 +7,7 @@ MERN app for purchasing video games.
 
 ### `User Part`
 1. User can purchase any available games.
-2. Once purchased, the same game can't be purchased again.
+2. Once purchased, the same game can't be purchased again by that user.
 3. All the data are stored to mongodb database.
 4. Can see his purchased games list.
 
