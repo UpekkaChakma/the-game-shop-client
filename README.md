@@ -1,14 +1,6 @@
-#The-game-shop-frontend-client
-#Its backend api link: https://obscure-crag-81002.herokuapp.com
-A react app built with css,react-bootstrap.
-Has authentication method with firebase.
-Its about a online gameshop that users can buy games and all of their info/data are stored in mongodb database.
-It also has admin part that admin can add and delete games.
-
-
 ### `The Game-shop frontend-client`
 MERN app for purchasing video games.
-See the [Back-End Github](https://github.com/UpekkaChakma/the-game-shop-server) for more information.
+See the [Github repo](https://github.com/UpekkaChakma/the-game-shop-server) for it's back-end part.
 
 ### `ReactJS`  `React-Bootstrap`  `Firebase`  `React-Hook-Form` `Sweetalert`
 
