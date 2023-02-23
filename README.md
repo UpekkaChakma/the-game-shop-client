@@ -10,12 +10,12 @@ It also has admin part that admin can add and delete games.
 MERN app for purchasing video games.
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `ReactJS` ### `React-Bootstrap` ### `Firebase` ### `User Part`
+### `ReactJS`  `React-Bootstrap`  `Firebase`  `React-Hook-Form` `Sweetalert`
 
 ### `User Part`
-1. User can purchase game.
-2. All the data stored to mongodb database.
-3. Can see his purchased game.
+1. User can purchase any available games.
+2. All the data are stored to mongodb database.
+3. Can see his purchased games list.
 
 ### `Admin Part`
 1. Admin can add new game-data to mongodb database.
