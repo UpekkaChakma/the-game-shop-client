@@ -1,7 +1,7 @@
 ### `The Game-shop frontend-client`
 MERN app for purchasing video games.
 
-### `See the [Github repo](https://github.com/UpekkaChakma/the-game-shop-server) for it's back-end part`.
+### `See the` [Github repo](https://github.com/UpekkaChakma/the-game-shop-server) `for it's back-end part`.
 
 ### `ReactJS`   `React-Bootstrap`   `Firebase`   `React-Hook-Form`  `Sweetalert`  `axios`
 
