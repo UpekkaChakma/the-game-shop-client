@@ -11,11 +11,11 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 
-### `[running tests](https://github.com/UpekkaChakma/the-game-shop-server)`
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+### `User Part`
+1. User can purchase game.
+2. All the data stored to mongodb database.
+3. Can see his purchased game.
 
 ### `Admin Part`
 1. Admin can add new game-data to mongodb database.
-2. Can edit and delete game-data
+2. Can edit and delete game-data.
