@@ -1,4 +1,4 @@
-### `The Game-shop frontend-client`
+### `The Game Shop front-end part`
 MERN app for purchasing video games.
 
 ### `See the` [Github repo](https://github.com/UpekkaChakma/the-game-shop-server) `for it's back-end part`.
