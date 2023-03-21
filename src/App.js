@@ -26,7 +26,6 @@ function App() {
 
   document.title = "The game shop";
   const [loggedInUser, setLoggedInUser] = useState({});
-  console.log(loggedInUser)
 
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>

@@ -26,16 +26,12 @@ const useFetchData = (url) => {
                 setState(prevState => ({
                     ...prevState,
                     data: response.data,
+                    loading: false
                 }))
             } catch (error) {
                 setState(prevState => ({
                     ...prevState,
                     error
-                }))
-            } finally {
-                setState(prevState => ({
-                    ...prevState,
-                    loading: false,
                 }))
             }
         }

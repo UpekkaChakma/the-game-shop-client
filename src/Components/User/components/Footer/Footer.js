@@ -51,11 +51,11 @@ const Footer = () => {
                         <Row xs={2} md={2} xl={4}>
                             {
                                 footerLinks.map(link =>
-                                    <Col id={link.id} className="d-flex flex-column mb-4 pl-5">
-                                        <Link className='text__p2 my-2'>{link.link_1}</Link>
-                                        <Link className='text__p2 my-2'>{link.link_2}</Link>
-                                        <Link className='text__p2 my-2'>{link.link_3}</Link>
-                                        <Link className='text__p2 my-2'>{link.link_4}</Link>
+                                    <Col key={link.id} className="d-flex flex-column mb-4 pl-5">
+                                        <Link to={link.id} className='text__p2 my-2'>{link.link_1}</Link>
+                                        <Link to={link.id} className='text__p2 my-2'>{link.link_2}</Link>
+                                        <Link to={link.id} className='text__p2 my-2'>{link.link_3}</Link>
+                                        <Link to={link.id} className='text__p2 my-2'>{link.link_4}</Link>
                                     </Col>
                                 )
                             }
@@ -68,9 +68,9 @@ const Footer = () => {
                     </Col>
                 </Row>
                 <Row className='justify-content-center my-3'>
-                    <Link className='text__p mx-2'>Terms of Service</Link>
-                    <Link className='text__p mx-2'>Privacy Policy</Link>
-                    <Link className='text__p mx-2'>Store Refund Policy</Link>
+                    <Link to="" className='text__p mx-2'>Terms of Service</Link>
+                    <Link to="" className='text__p mx-2'>Privacy Policy</Link>
+                    <Link to="" className='text__p mx-2'>Store Refund Policy</Link>
                 </Row>
             </Container>
         </footer>
